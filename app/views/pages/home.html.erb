@@ -1,2 +1,12 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<body id="home">
+<h1 class="text-center mb-5">Welcome to School Bus Tracker</h1>
+
+        <div id="type-of-user">
+            <h2>Select your type of user to continue:</h2>
+            <div class="user_btns mt-3">
+            <%= link_to 'Driver', new_driver_session_path, class: 'user_btn bg-dark' %>
+            <%= link_to 'Parents', new_parent_session_path, class: 'user_btn bg-dark' %>
+            <%= link_to 'Students', new_student_session_path, class: 'user_btn bg-dark' %>
+            </div>
+        </div>
+</body>
