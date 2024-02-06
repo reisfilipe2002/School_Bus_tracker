@@ -1,0 +1,21 @@
+<h1>Bus Dashboard</h1>
+
+<!-- Display a list of all buses -->
+<ul>
+  <% @buses.each do |bus| %>
+    <li>
+      <%= link_to bus.driver.name, bus_path(bus) %> |
+      <%= link_to 'Edit', edit_bus_path(bus) %> |
+      <%= link_to 'Delete', bus_path(bus), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+  <% end %>
+</ul>
+
+<!-- Create a new bus form -->
+<%= form_for @bus, url: buses_path do |f| %>
+  <div class="field">
+    <%= f.label :driver_id %>
+    <%= f.collection_select :driver_id, Driver.all, :id, :name %>
+  </div>
+  <%= f.submit 'Create Bus' %>
+<% end %>

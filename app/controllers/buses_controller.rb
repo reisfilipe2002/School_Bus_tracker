@@ -1,6 +1,5 @@
 class BusesController < ApplicationController
     before_action :authenticate_admin!
-  
     def create
       @bus = Bus.new(bus_params)
       if @bus.save
@@ -39,6 +38,16 @@ class BusesController < ApplicationController
       @bus = Bus.find(params[:id])
       @bus.destroy
       redirect_to buses_path
+    end
+    def dashboard
+      @buses = Bus.all 
+      @bus = Bus.new   
+      render :dashboard
+    end
+    
+    private
+    def bus_params
+      params.require(:bus).permit(:driver_id)
     end
   end
   
